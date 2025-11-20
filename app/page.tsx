@@ -1,5 +1,6 @@
 import FeatureRealestate from "./_components/FeatureRealestate";
 import HeroHome from "./_components/HeroHome";
+import WhatweDo from "./_components/WhatweDo";
 
 
 export default function Home() {
@@ -7,6 +8,7 @@ export default function Home() {
     <div >
    <HeroHome/>
    <FeatureRealestate/>
+   <WhatweDo/>
     </div>
   )
 }

@@ -3,10 +3,12 @@ import Image from "next/image";
 import logo from "../../public//Real-estate-logo-House-logo-Home-logo-Graphics-22469976-1-1-580x399.jpg"
         import { Menu, X } from "lucide-react";
 import { useState } from "react";
+import { SignInButton, UserButton, useUser } from "@clerk/nextjs";
+import { Button } from "@/components/ui/button";
 
 export default function Navbar() {
       const [open, setOpen] = useState(false);
-
+      const {user} = useUser()
   return (
     <div>
       <nav className="flex items-center bg-black justify-between border mx-4 max-md:w-full max-md:justify-between border-slate-700 px-4 py-2 w-full m-0! text-white text-lg">
@@ -40,10 +42,14 @@ export default function Navbar() {
             className="border border-slate-600 hover:bg-slate-800 px-4 py-2 rounded-full text-sm font-medium transition">
             Contact
         </button>
-        <button
-            className="bg-white hover:shadow-[0px_0px_30px_14px] shadow-[0px_0px_30px_7px] hover:shadow-white/50 shadow-white/50 text-black px-4 py-2 rounded-full text-sm font-medium hover:bg-slate-100 transition duration-300">
-            Get Started
-        </button>
+         {!user ? (
+          <SignInButton>
+            <Button>Get started</Button>
+          </SignInButton>
+        ):(
+          <UserButton/>
+        ) }
+        
     </div>
 {/* Mobile Button */}
       <button 
@@ -69,6 +75,7 @@ export default function Navbar() {
             className="bg-white hover:shadow-[0px_0px_30px_14px] shadow-[0px_0px_30px_7px] hover:shadow-white/50 shadow-white/50 text-black px-4 py-2 rounded-full text-sm font-medium hover:bg-slate-100 transition duration-300">
             Get Started
         </button>
+
     </div>
 </nav>
     </div>

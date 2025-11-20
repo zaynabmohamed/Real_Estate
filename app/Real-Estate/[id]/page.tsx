@@ -4,6 +4,7 @@ import { api } from "@/convex/_generated/api";
 import { useMutation, useQuery } from "convex/react";
 import { Bath, Bed, Calculator, MapPin, Square } from "lucide-react";
 import Image from "next/image";
+import Link from "next/link";
 import { useParams, useRouter } from "next/navigation";
 import { useState } from "react";
 
@@ -29,7 +30,9 @@ export default function Page() {
     <div className="max-w-4xl mx-auto">
       {/* Button Delete and Edite */}
       <div className="flex items-center mt-10 justify-end ">
+        <Link href={`/Real-Estate/${getproperty?._id}/edit`}>
         <Button>Edite</Button>
+        </Link>
         <Button
           className="bg-red-500 ml-4 text-white  cursor-pointer"
           onClick={handleDelete}
