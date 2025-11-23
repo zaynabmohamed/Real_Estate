@@ -9,8 +9,8 @@ export type property = Doc<"Real_Estate">;
     propertyType ?:string;
     minPrice?:number | undefined;
     maxPrice?:number | undefined;
-    bedrooms?:string;
-    bathrooms?:string ;
+    bedrooms?:number|undefined;
+    bathrooms?:number | undefined ;
   }
 // Type Create 
 export interface CreatePropertyType{

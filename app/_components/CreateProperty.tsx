@@ -40,9 +40,9 @@ export default function CreateProperty({intialData,isEditing=false , propertyId}
            try{
             if(isEditing && propertyId){
               await updateProperty({
-                 id:propertyId as any,
+                 propertyId:propertyId as any,
                      ...formData
-              })
+            })
             }else{
               await createProperty(formData as any)
             }

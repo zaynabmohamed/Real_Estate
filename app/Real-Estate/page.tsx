@@ -21,17 +21,7 @@ export default React.memo( function RealEstate() {
     const property = searchParams.get("type")
     const [filter , setFilter] = useState<PropertyFilters>({})
 
-    const getRealEstate = useQuery(api.Real_Estate.getRealEstate,filter
-  //     {
-  // propertyType: filter.propertyType,
-  // status: filter.status,
-  // minPrice: filter.minPrice ? Number(filter.minPrice) : undefined,
-  // maxPrice: filter.maxPrice ? Number(filter.maxPrice) : undefined,
-  // bedrooms: filter.bedrooms ? Number(filter.bedrooms) : undefined,
-  // bathrooms: filter.bathrooms ? Number(filter.bathrooms) : undefined,
-  //   }
-
-);
+    const getRealEstate = useQuery(api.Real_Estate.getRealEstate,filter);
       console.log(getRealEstate);
     if (!getRealEstate) return <p>Loading... </p>
   return (
@@ -43,7 +33,7 @@ export default React.memo( function RealEstate() {
               <Button >  Add property<ArrowBigRight/></Button>
 </Link>
         </div> 
-     <Filters filter={filter} setFilter={setFilter} />
+     <Filters filter={filter} onFilterChange={setFilter} />
         {getRealEstate === undefined ? (
           <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6'>
          {[...Array(6)].map((_,i)=>(

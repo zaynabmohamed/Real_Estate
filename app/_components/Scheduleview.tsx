@@ -17,8 +17,13 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { format } from "date-fns";
 import { Label } from "@/components/ui/label";
+  
 
-export default function Scheduleview({property}){
+interface TypeProperty{
+  _id:string,
+  title:string,
+}
+export default function Scheduleview({property}:TypeProperty ){
 
   const [selectTime, setSelectTime] = useState("");
   const { user } = useUser();

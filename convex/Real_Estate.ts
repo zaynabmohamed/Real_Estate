@@ -9,8 +9,8 @@ import { mutation, query } from "./_generated/server";
   args: {
     propertyType: v.optional(v.string()),
     status: v.optional(v.string()),
-    minPrice: v.optional(v.string()),
-    maxPrice: v.optional(v.string()),
+    minPrice: v.optional(v.number()),
+    maxPrice: v.optional(v.number()),
     bedrooms: v.optional(v.string()),
     bathrooms: v.optional(v.string()),
   },
