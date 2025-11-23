@@ -1,5 +1,6 @@
 "use client";
 import { Button } from "@/components/ui/button";
+import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTrigger } from "@/components/ui/dialog";
 import { api } from "@/convex/_generated/api";
 import { useMutation, useQuery } from "convex/react";
 import { Bath, Bed, Calculator, MapPin, Square } from "lucide-react";
@@ -7,8 +8,10 @@ import Image from "next/image";
 import Link from "next/link";
 import { useParams, useRouter } from "next/navigation";
 import { useState } from "react";
+import imgwhatsApp from "../../../public/images.whatsApp.png"
+import Scheduleview from "@/app/_components/Scheduleview";
 
-export default function Page() {
+export default function PageDetails() {
   const [select, setSelect] = useState(0);
   const params = useParams();
   const propertyId = params.id as string;
@@ -139,9 +142,26 @@ export default function Page() {
           <div className="bg-white rounded-lg border border-dashed border-gray-800 p-6 ">
             <h3 className="font-bold text-xl">Contact InFormation</h3>
             <div className="space-y-3 mt-4 flex flex-col items-center justify-center">
-              <Button className="w-[200px]">Contact Agent</Button>
-              <Button  className="w-[200px]">Schedule Viewing</Button>
-              <Button  className="w-[200px]">Save Property</Button>
+
+              <Dialog>
+  <DialogTrigger >  
+    <Button className="w-[200px]">Contact Agent</Button>
+    </DialogTrigger>
+  <DialogContent>
+    <DialogHeader>
+      <DialogDescription>
+        <div className="flex items-center justify-center gap-4">
+          <Image src={imgwhatsApp} alt="whatsapp" width={100} height={100} />
+          <p className="text-2xl">01020910926</p>
+        </div>
+      </DialogDescription>
+    </DialogHeader>
+  </DialogContent>
+</Dialog>
+     <Scheduleview  property={{   
+        _id:propertyId,
+       title:getproperty?.title,
+     }}/>
             </div>
           </div>
         </div>

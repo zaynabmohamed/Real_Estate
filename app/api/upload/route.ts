@@ -16,7 +16,6 @@ export async function POST(request:NextRequest){
             return NextResponse.json({error:"No file provider"},{status:400})
         }
    // convert file to buffer
-
    const bytes = await file.arrayBuffer()
    const buffer = Buffer.from(bytes)
    // upload to cloudinary

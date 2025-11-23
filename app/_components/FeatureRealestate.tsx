@@ -23,7 +23,7 @@ if (!FeatureRealestate) return <p>Loading... </p>;
          ))}
           </div>
         ):FeatureRealestate.length ===  0 ? (
-          <div className='text-center'>
+          <div className='text-center shadow-lg h-[150px] flex justify-center items-center flex-col'>
             <h3 className=' text-xl font-semibold text-gray-600 mb-4'>No Feature Real-Estate </h3>
              <Button>Add your Rea-Estate</Button>
           </div>
@@ -39,17 +39,17 @@ if (!FeatureRealestate) return <p>Loading... </p>;
         </div>
         {/* start section  */}
         <div className='grid grid-cols-1 md:grid-cols-3 gap-8 py-12'>
-          <div className='text-center'>
-            <h3 className='text-4xl font-bold text-[#e04141]'>500+</h3>
+          <div className='text-center shadow-lg h-[150px] flex justify-center items-center flex-col bg-[#f9e0e0]'>
+            <h3 className='text-4xl font-bold text-[#e04141]'>3,500+</h3>
             <p className='text-gray-600'>Real-Estate</p>
           </div>
-          <div className='text-center'>
-            <h3 className='text-4xl font-bold text-[#e04141]'>200+</h3>
-            <p className='text-gray-600'>Real-Estate</p>
+          <div className='text-center shadow-lg h-[150px] flex justify-center items-center flex-col bg-green-100'>
+            <h3 className='text-4xl font-bold text-green-700'>95%</h3>
+            <p className='text-gray-600'> Happy Clients </p>
           </div>
-          <div className='text-center'>
-            <h3 className='text-4xl font-bold text-[#e04141]'>80+</h3>
-            <p className='text-gray-600'>Real-Estate</p>
+          <div className='text-center shadow-lg h-[150px] flex justify-center items-center flex-col bg-blue-100'>
+            <h3 className='text-4xl font-bold text-blue-700'>25+</h3>
+            <p className='text-gray-600'>Years of Experience</p>
           </div>
         </div>
       </div>

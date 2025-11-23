@@ -1,16 +1,27 @@
 "use client"
-import React, { useContext } from "react"
-import { FilterContext } from "../Context/FilterContext"
-import { FilterContextType } from './../Types/Type'
-export default React.memo( function Filters() {
-     const {filter ,  handleFilterChange }  = useContext<FilterContextType>(FilterContext)
+import React from "react";
+import { PropertyFilters } from "../Types/Type";
+
+interface TypeFilter{
+    filter:PropertyFilters,
+     setFilter:(filter:PropertyFilters)=>void
+}
+export default React.memo( function Filters({filter , setFilter }: TypeFilter) {
+    const handleFilterChange = (key: keyof PropertyFilters, value: string |number)=> {
+  setFilter({
+    ...filter,
+    //  minPrice: value === "" ? undefined : String(value) ,
+    //   maxPrice: value === "" ? undefined : String(value) ,
+    [key]: value,
+  });
+    }
   return (
     <div className="space-y-4">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
             {/* property Type */}
-            <div className="">
+            <div>
                 <label className="block text-sm font-medium text-gray-700 mb-1">Property Type</label>
-                <select className="w-full p-2 border border-gray-300 rounded-md" value={filter.propertyType || "all"} onChange={(e)=> handleFilterChange("propertyType" , e.target.value)}>
+                <select className="w-full p-2 border border-gray-300 rounded-md" value={filter.propertyType || "all"} onChange={(e)=> handleFilterChange("propertyType" , e.target.value )}>
                      <option value="all">All Types</option>
                      <option value="house">house</option>
                      <option value="apartment">apartment</option>
@@ -19,7 +30,7 @@ export default React.memo( function Filters() {
                 </select>
             </div>
              {/* status  */}
-            <div className="">
+            <div >
                 <label className="block text-sm font-medium text-gray-700 mb-1">Stauts</label>
                 <select className="w-full p-2 border border-gray-300 rounded-md" value={filter.status || "all"} onChange={(e)=> handleFilterChange("status" , e.target.value)}>
                      <option value="all">All status</option>
@@ -30,9 +41,9 @@ export default React.memo( function Filters() {
                 </select>
             </div>
             {/* bedrooms */}
-            <div className="">
+            <div >
                 <label className="block text-sm font-medium text-gray-700 mb-1">bedrooms</label>
-                <select className="w-full p-2 border border-gray-300 rounded-md" value={filter.bedrooms || "all"} onChange={(e)=> handleFilterChange("bedrooms" , e.target.value ? Number(e.target.value) : undefined)}>
+                <select className="w-full p-2 border border-gray-300 rounded-md" value={filter.bedrooms || ""} onChange={(e)=> handleFilterChange("bedrooms" , e.target.value)}>
                      <option value="">Any</option>
                      <option value="1">+1</option>
                      <option value="2">+2</option>
@@ -41,9 +52,9 @@ export default React.memo( function Filters() {
                 </select>
             </div>
             {/* Bathrooms */}
-            <div className="">
+            <div >
                 <label className="block text-sm font-medium text-gray-700 mb-1">Bathrooms</label>
-                <select className="w-full p-2 border border-gray-300 rounded-md" value={filter.bathrooms || "all"} onChange={(e)=> handleFilterChange("bathrooms" , e.target.value ? Number(e.target.value) : undefined)}>
+                <select className="w-full p-2 border border-gray-300 rounded-md" value={filter.bathrooms || ""} onChange={(e)=> handleFilterChange( "bathrooms", e.target.value)}>
                      <option value="">Any</option>
                      <option value="1">+1</option>
                      <option value="2">+2</option>
@@ -52,14 +63,14 @@ export default React.memo( function Filters() {
                 </select>
             </div>
             {/* minPrice */}
-            <div className="">
+            <div >
                 <label className="block text-sm font-medium text-gray-700 mb-1">Min Price</label>
-                <input type="number"  placeholder="Min price" className="w-full p-2 border border-gray-300 rounded-md" value={filter.minPrice || ""} onChange={(e)=>  handleFilterChange("minPrice", e.target.value  ? Number (e.target.value) : undefined)} />
+                <input type="number"  placeholder="Min price" className="w-full p-2 border border-gray-300 rounded-md" value={filter.minPrice } onChange={(e)=>handleFilterChange("minPrice" , e.target.value)} />
             </div>
             {/* Max price */}
-            <div className="">
+            <div >
                 <label className="block text-sm font-medium text-gray-700 mb-1">Max Price</label>
-                <input type="number" placeholder="Max price" className="w-full p-2 border border-gray-300 rounded-md" value={filter.maxPrice || ""} onChange={(e)=> handleFilterChange("maxPrice" , e.target.value  ?Number  (e.target.value) : undefined)} />
+                <input type="number" placeholder="Max price" className="w-full p-2 border border-gray-300 rounded-md" value={filter.maxPrice} onChange={(e)=> handleFilterChange( "maxPrice", e.target.value)} />
             </div>
     
         </div>
@@ -67,3 +78,6 @@ export default React.memo( function Filters() {
     </div>
   )
 })
+
+
+

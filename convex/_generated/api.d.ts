@@ -9,6 +9,7 @@
  */
 
 import type * as Real_Estate from "../Real_Estate.js";
+import type * as userView from "../userView.js";
 import type * as users from "../users.js";
 
 import type {
@@ -19,6 +20,7 @@ import type {
 
 declare const fullApi: ApiFromModules<{
   Real_Estate: typeof Real_Estate;
+  userView: typeof userView;
   users: typeof users;
 }>;
 

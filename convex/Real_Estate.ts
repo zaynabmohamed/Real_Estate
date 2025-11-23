@@ -5,41 +5,46 @@
 import {  v } from "convex/values";
 import { mutation, query } from "./_generated/server";
     // get All Real_Estate 
-  export const getRealEstate =query({
-        args:{
-          propertyType:v.optional(v.string()),
-          status: v.optional(v.string()),
-          minPrice:v.optional(v.number()),
-          maxPrice:v.optional(v.number()),
-          bedrooms:v.optional(v.number()),
-          bathrooms:v.optional(v.number()),
-        },
-        handler:async(ctx, args)=>{
-          let Real_Estate =await ctx.db.query("Real_Estate").collect()
-           
- // Apply filter 
-          if(args.propertyType && args.propertyType !== "all"){
-             Real_Estate = Real_Estate .filter(p=>p.propertyType ===  args.propertyType)
-          }
-if (args.status && args.status !== "all") {
-  Real_Estate = Real_Estate.filter((p) => p.status === args.status);
-}
-        if(args.minPrice !== undefined ){
-  Real_Estate = Real_Estate.filter(p => p.price >= args.minPrice!);
-}
-if(args.maxPrice !== undefined){
-  Real_Estate = Real_Estate.filter(p => p.price <= args.maxPrice!);
-}
-if(args.bedrooms !== undefined){
-  Real_Estate = Real_Estate.filter(p => p.bedrooms >= args.bedrooms!);
-}
-if(args.bathrooms !== undefined){
-  Real_Estate = Real_Estate.filter(p => p.bathrooms >= args.bathrooms!);
-}
- // sort bt createion time 
-        return Real_Estate.sort((a, b)=>b._creationTime - a._creationTime )
-      }
-  })
+ export const getRealEstate = query({
+  args: {
+    propertyType: v.optional(v.string()),
+    status: v.optional(v.string()),
+    minPrice: v.optional(v.string()),
+    maxPrice: v.optional(v.string()),
+    bedrooms: v.optional(v.string()),
+    bathrooms: v.optional(v.string()),
+  },
+  handler: async (ctx, args) => {
+    let Real_Estate = await ctx.db.query("Real_Estate").collect();
+
+    if (args.propertyType && args.propertyType !== "all") {
+      Real_Estate = Real_Estate.filter(p => p.propertyType === args.propertyType);
+    }
+
+    if (args.status && args.status !== "all") {
+      Real_Estate = Real_Estate.filter(p => p.status === args.status);
+    }
+
+    if (args.minPrice) {
+      Real_Estate = Real_Estate.filter(p => Number(p.price) <= args.minPrice);
+    }
+
+    if (args.maxPrice) {
+      Real_Estate = Real_Estate.filter(p => Number(p.price) >= args.maxPrice!);
+    }
+
+    if (args.bedrooms ) {
+      Real_Estate = Real_Estate.filter(p => p.bedrooms >= args.bedrooms);
+    }
+
+    if (args.bathrooms ) {
+      Real_Estate = Real_Estate.filter(p => p.bathrooms >= args.bathrooms);
+    }
+
+    return Real_Estate.sort((a, b) => b._creationTime - a._creationTime);
+  }
+});
+
  // get a single property by ID 
   export const getProperty = query({ // query بتعبر عن عملية قراءة البيانات فقط 
     args:{id:v.id("Real_Estate")},

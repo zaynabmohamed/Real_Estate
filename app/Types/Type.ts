@@ -5,20 +5,14 @@ export type property = Doc<"Real_Estate">;
  export type propertyType =  "house" | "apartment" | "condo" | "townhouse";
  export type status = "for-sale" | " for-rent" | "sold" | "rented";
   export interface PropertyFilters {
-    status?:string;
+    status?:string ;
     propertyType ?:string;
-    minPrice?:number;
-    maxPrice?:number;
-    bedrooms?:number;
-    bathrooms?:number;
+    minPrice?:number | undefined;
+    maxPrice?:number | undefined;
+    bedrooms?:string;
+    bathrooms?:string ;
   }
- // Types Filter context
- export interface FilterContextType {
-  filter: PropertyFilters;
-  setFilter: (filter: PropertyFilters) => void;
-  handleFilterChange: (key: keyof PropertyFilters, value: any) => void;
-}
-
+// Type Create 
 export interface CreatePropertyType{
    title: string,
    description:string,

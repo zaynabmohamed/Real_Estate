@@ -35,4 +35,21 @@ export default defineSchema({
         images:v.array(v.string()), // cloudinary Urls
         featured:v.optional(v.boolean()),
      }),
+      PropertyView : defineTable({
+             propertyId :v.id("Real_Estate"),
+             propertyTitle: v.string(),
+             userEmail:v.string(),
+             userName:v.string(),
+          userPhone:v.optional(v.string()),
+          viewDate:v.string(),
+         viewTime:v.string(),
+         message:v.optional(v.string()),
+         createAt :v.number(),
+         userId:v.optional(v.string()),
+     })
+      .index("by_property",["propertyId"])
+      .index("by_user",["userName"])
+      .index("by_email",["userEmail"])
+      
+
 })
