@@ -6,17 +6,14 @@ First, run the development server:
 
 ```bash Frontend
 npm run dev
-``` Backend
+
+```
+```bash Backend
 npx convex dev
 
 ```
 A modern real‑estate platform built with Next.js, Convex, TailwindCSS, and Clerk for authentication. The website allows users to browse, filter, and view real‑estate listings, and admins can manage properties easily.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
-
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
-
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
 
 ## 🚀 Tech Stack
 
@@ -58,9 +55,9 @@ This project uses [`next/font`](https://nextjs.org/docs/app/building-your-applic
  ## 🔐 Environment Variables
  Create a `.env.local` file and add:
 
-NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY=
-CLERK_SECRET_KEY=
-CONVEX_DEPLOYMENT=
+_ NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY=
+_ CLERK_SECRET_KEY=
+_ CONVEX_DEPLOYMENT=
 
 ## ✨ Author
 Developed by Zaynab Mohamed
