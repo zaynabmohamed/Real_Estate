@@ -3,7 +3,9 @@ This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-
 ## Real Estate Website
 
 First, run the development server:
-
+ ``` bash Install node_modules
+ npm install
+ ```
 ```bash Frontend
 npm run dev
 
