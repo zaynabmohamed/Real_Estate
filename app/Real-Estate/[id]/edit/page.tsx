@@ -2,6 +2,7 @@
 "use client"
 import CreateProperty from "@/app/_components/CreateProperty";
 import { api } from "@/convex/_generated/api";
+import { Id } from "@/convex/_generated/dataModel";
 import {useMutation, useQuery} from "convex/react";
 import { useParams } from "next/navigation";
 
@@ -9,7 +10,7 @@ import { useParams } from "next/navigation";
 export default  function Page() {
 
   const params = useParams()
-  const propertyId = params?.id as string;
+  const propertyId = params?.id  as Id<"Real_Estate">;;
   const property = useQuery(api.Real_Estate.getProperty, { id: propertyId });
    const updateProperty = useMutation(api.Real_Estate.updateProperty);
 
@@ -21,7 +22,7 @@ export default  function Page() {
     <div className=" max-w-3xl mx-auto mt-8">
       <CreateProperty
           isEditing={true}
-  intialData={property}
+      intialData={property}
       />
     </div>
   )

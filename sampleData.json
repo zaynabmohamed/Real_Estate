@@ -18,25 +18,7 @@
     ],
     "featured": true
   },
-  {
-    "title": "Luxury Apartment Downtown",
-    "description": "High-rise apartment with stunning city views and premium amenities.",
-    "price": 2200,
-    "bedrooms": 2,
-    "bathrooms": 2,
-    "area": 1100,
-    "address": "500 Main Ave Apt 23B",
-    "city": "New York",
-    "state": "NY",
-    "zipCode": "10001",
-    "propertyType": "apartment",
-    "status": "for-rent",
-    "images": [
-      "https://res.cloudinary.com/demo/image/upload/v1/apartment1.jpg",
-      "https://res.cloudinary.com/demo/image/upload/v1/apartment1_view.jpg"
-    ],
-    "featured": false
-  },
+
   {
     "title": "Cozy Condo by the Beach",
     "description": "Relax in this 2-bedroom condo just steps from the ocean.",

@@ -1,6 +1,6 @@
 "use client";
 import { Button } from "@/components/ui/button";
-import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTrigger } from "@/components/ui/dialog";
+import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
 import { api } from "@/convex/_generated/api";
 import { useMutation, useQuery } from "convex/react";
 import { Bath, Bed, Calculator, MapPin, Square } from "lucide-react";
@@ -10,11 +10,12 @@ import { useParams, useRouter } from "next/navigation";
 import { useState } from "react";
 import imgwhatsApp from "../../../public/images.whatsApp.png"
 import Scheduleview from "@/app/_components/Scheduleview";
+import { Id } from "@/convex/_generated/dataModel";
 
 export default function PageDetails() {
   const [select, setSelect] = useState(0);
   const params = useParams();
-  const propertyId = params.id as string;
+  const propertyId = params.id  as Id<"Real_Estate">;
   const router = useRouter();
   const getproperty = useQuery(api.Real_Estate.getProperty, { id: propertyId });
   const deleteproperty = useMutation(api.Real_Estate.deleteProperty);
@@ -142,26 +143,30 @@ export default function PageDetails() {
           <div className="bg-white rounded-lg border border-dashed border-gray-800 p-6 ">
             <h3 className="font-bold text-xl">Contact InFormation</h3>
             <div className="space-y-3 mt-4 flex flex-col items-center justify-center">
-
-              <Dialog>
-  <DialogTrigger >  
+             <Dialog>
+  <DialogTrigger asChild>
     <Button className="w-[200px]">Contact Agent</Button>
-    </DialogTrigger>
-  <DialogContent>
-    <DialogHeader>
-      <DialogDescription>
-        <div className="flex items-center justify-center gap-4">
-          <Image src={imgwhatsApp} alt="whatsapp" width={100} height={100} />
-          <p className="text-2xl">01020910926</p>
-        </div>
-      </DialogDescription>
-    </DialogHeader>
+  </DialogTrigger>
+  <DialogContent className="w-full h-auto">
+    <DialogTitle className="sr-only">Contact Agent</DialogTitle>
+   <DialogHeader>
+  <div className="flex items-center justify-center gap-4">
+    <Image src={imgwhatsApp} alt="whatsapp" width={100} height={100} />
+    <Link href="https://wa.me/201020910926?text=Hello%21%20%F0%9F%91%8B%20Welcome%2C%20and%20thank%20you%20for%20visiting%20my%20profile.%20How%20can%20I%20help%20you%20today%3F" target="_blank" rel="noopener noreferrer" target="_blank" rel="noopener noreferrer"><h5 className="text-2xl">01020910926</h5></Link>
+  </div>
+</DialogHeader>
+
   </DialogContent>
 </Dialog>
-     <Scheduleview  property={{   
-        _id:propertyId,
-       title:getproperty?.title,
-     }}/>
+
+    {getproperty && (
+  <Scheduleview 
+    property={{   
+      id: propertyId,
+      title: getproperty.title,
+    }}
+  />
+)}
             </div>
           </div>
         </div>

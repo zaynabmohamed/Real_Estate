@@ -1,4 +1,5 @@
 import { v } from "convex/values";
+
 import { mutation } from "./_generated/server";
 
 export const updateUser = mutation({
@@ -30,6 +31,6 @@ export const updateUser = mutation({
       email: args.email,
     });
 
-    return newUser._id;
+    return newUser;
   },
 });

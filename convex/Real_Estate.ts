@@ -11,8 +11,8 @@ import { mutation, query } from "./_generated/server";
     status: v.optional(v.string()),
     minPrice: v.optional(v.number()),
     maxPrice: v.optional(v.number()),
-    bedrooms: v.optional(v.string()),
-    bathrooms: v.optional(v.string()),
+    bedrooms: v.optional(v.number()),
+    bathrooms: v.optional(v.number()),
   },
   handler: async (ctx, args) => {
     let Real_Estate = await ctx.db.query("Real_Estate").collect();
@@ -26,20 +26,20 @@ import { mutation, query } from "./_generated/server";
     }
 
     if (args.minPrice) {
-      Real_Estate = Real_Estate.filter(p => Number(p.price) <= args.minPrice);
+      Real_Estate = Real_Estate.filter(p => Number(p.price) >= args.minPrice!);
     }
 
     if (args.maxPrice) {
-      Real_Estate = Real_Estate.filter(p => Number(p.price) >= args.maxPrice!);
+      Real_Estate = Real_Estate.filter(p => Number(p.price) <= args.maxPrice!);
     }
+if (args.bedrooms != null) {
+  Real_Estate = Real_Estate.filter(p => p.bedrooms >=Number( args.bedrooms));
+}
 
-    if (args.bedrooms ) {
-      Real_Estate = Real_Estate.filter(p => p.bedrooms >= args.bedrooms);
-    }
+if (args.bathrooms != null) {
+  Real_Estate = Real_Estate.filter(p => p.bathrooms >= Number(args.bathrooms));
+}
 
-    if (args.bathrooms ) {
-      Real_Estate = Real_Estate.filter(p => p.bathrooms >= args.bathrooms);
-    }
 
     return Real_Estate.sort((a, b) => b._creationTime - a._creationTime);
   }
@@ -107,8 +107,8 @@ import { mutation, query } from "./_generated/server";
              title:v.string(),
                     description:v.string(),
                     price:v.number(),
-                    bedrooms:v.number(),
-                    bathrooms:v.number(),
+                   bedrooms: v.optional(v.number()),
+                   bathrooms: v.optional(v.number()),
                     area:v.number(),
                     address:v.string(),
                     city:v.string(),
@@ -143,16 +143,22 @@ export const deleteProperty =  mutation({
   }
 })
 // get feature property 
-export const  getFeature = query({
-  args:{},
-  handler:async(ctx) =>{
-    return await ctx.db.query("Real_Estate").filter((q)=>q.eq(q.field("featured"), true)).collect()
-  }
-})
+export const getFeature = query({
+  args: {}, // مفيش فلتر إضافي هنا
+  handler: async (ctx) => {
+    // استعلام على جدول Real_Estate مع فلتر featured = true
+    const featuredProperties = await ctx.db
+      .query("Real_Estate")
+      .filter((q) => q.eq(q.field("featured"), true))
+      .collect();
+
+    return featuredProperties;
+  },
+});
 
 // db.replace => method will replace the existing document entirely
 // insert => create new documents in the database
 // db.delete => delete from the table 
 // db.get =>  can read its data
-// eq => ===
+
         

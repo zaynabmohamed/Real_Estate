@@ -8,6 +8,7 @@ import {
   DialogContent,
   DialogDescription,
   DialogHeader,
+  DialogTitle,
   DialogTrigger,
 } from "@/components/ui/dialog";
 import React, { useState } from "react";
@@ -17,11 +18,14 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { format } from "date-fns";
 import { Label } from "@/components/ui/label";
+import { Id } from "@/convex/_generated/dataModel";
   
 
 interface TypeProperty{
-  _id:string,
-  title:string,
+  property:{
+   id: Id<"Real_Estate">,
+   title:string,
+  }
 }
 export default function Scheduleview({property}:TypeProperty ){
 
@@ -70,7 +74,7 @@ export default function Scheduleview({property}:TypeProperty ){
   try{
 
     await createView ({
-      propertyId:property?._id,
+      propertyId:property?.id,
       propertyTitle:property?.title,
       userEmail:user?.emailAddresses?.[0]?.emailAddress,
       userName:user?.fullName || user.firstName || "unKnow",
@@ -105,9 +109,9 @@ const isDateDisabled = (date : Date)=>{
   return (
     <div>
       <Dialog>
-        <DialogTrigger> <Button className="w-[200px]">Schedule Viewing</Button> 
-        </DialogTrigger>
-        <DialogContent className="w-full h-auto">
+        <DialogTrigger asChild><Button className="w-[200px]">Schedule Viewing</Button></DialogTrigger>
+        <DialogContent className="w-full">
+           <DialogTitle></DialogTitle>
           <DialogHeader>
             <DialogDescription className="text-xl">
               book a Viewing for {property?.title}
@@ -115,12 +119,12 @@ const isDateDisabled = (date : Date)=>{
           </DialogHeader>
           {/* Calender */}
           {success ? (
-            <div className="text-center py-8 w-full">
+            <div className="text-center py-4 w-full">
               <h1 className="text-2xl text-red-500 pb-6"> View Scheduled</h1>
               <p className="text-xl">we will contact you soon to confirm your appointment</p>
             </div>
           ) : (
-            <form onSubmit={handleSubmit} className="space-y-6 h-auto">
+            <form onSubmit={handleSubmit} >
               <Calendar
                 mode="single"
                 selected={selectDate}
@@ -129,7 +133,7 @@ const isDateDisabled = (date : Date)=>{
                 className="rounded-lg border"
               />
               {/* time */}
-              <div className="space-y-2">
+              <div >
                 <div className="grid grid-cols-3 gap-2">
                   {availabletime?.map((time) => (
                     <Button

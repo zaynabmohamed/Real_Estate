@@ -1,4 +1,5 @@
-"use client"
+
+ "use client"
 import { api } from "@/convex/_generated/api"
 import { useMutation } from "convex/react"
 import { CreatePropertyType } from "../Types/Type"
@@ -7,6 +8,7 @@ import { Upload } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useRouter } from "next/navigation";
 import Image from "next/image";
+import { Id } from "@/convex/_generated/dataModel";
  interface PropertyType{
    intialData?: Partial<CreatePropertyType>   // Partial في حاله القيم كانت اختياري وليست اجباري بنضيفها
    isEditing?:boolean;
@@ -39,10 +41,12 @@ export default function CreateProperty({intialData,isEditing=false , propertyId}
            e.preventDefault()
            try{
             if(isEditing && propertyId){
-              await updateProperty({
-                 propertyId:propertyId as any,
-                     ...formData
-            })
+        await updateProperty({
+  id: propertyId as Id<"Real_Estate">,
+  ...formData,
+  propertyType: formData.propertyType as "house" | "apartment" | "condo" | "townhouse",
+  status: formData.status as "for-sale" | "for-rent" | "sold" | "rented",
+});
             }else{
               await createProperty(formData as any)
             }
@@ -128,7 +132,7 @@ export default function CreateProperty({intialData,isEditing=false , propertyId}
         </div>
         </div>
        {/* property Details */}
-  <div className="bg-white p-6 rounded-lg shadow-sm border">
+       <div className="bg-white p-6 rounded-lg shadow-sm border">
           <h3>Property Details</h3>
           <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
             {/* Bedroom */}
@@ -173,9 +177,10 @@ export default function CreateProperty({intialData,isEditing=false , propertyId}
           <div>
           <label className="block">Featured Property *</label>
           <div className="flex items-center">
-          <input className="w-full p-3 border border-gray-300 rounded " type="checkbox" name="featured" checked={formData?.featured}  onChange={handlecheckBoxChange} required/>
-          <span className="ml-1 text-sm text-gray-700"> Mark as featured property</span>
+          {/* <input className="w-full p-3 border border-gray-300 rounded " type="checkbox" name="featured" checked={formData?.featured}  onChange={handlecheckBoxChange} required/> */}
           </div>
+                    <input className="w-full p-3 border border-gray-300 rounded " type="checkbox" name="featured" checked={formData?.featured}  onChange={handlecheckBoxChange} required/>
+                    <span className="ml-1 text-sm text-gray-700"> Mark as featured property</span>
           </div>
     </div>
         {/* Address */}

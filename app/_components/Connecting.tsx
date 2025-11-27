@@ -3,7 +3,7 @@ import img from "../../public/modern-house-interior-exterior-design-46517595.web
 import { Button } from "@/components/ui/button";
 export default function Connecting() {
   return (
-    <div className="p-24 grid grid-cols-1 lg:grid-cols-2 gap-8">
+    <div className="p-14 grid grid-cols-1 lg:grid-cols-2 gap-8">
       <Image
         className="rounded-3xl w-full object-cover h-[450px]"
         src={img}

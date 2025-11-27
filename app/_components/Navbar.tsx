@@ -31,7 +31,7 @@ export default function Navbar() {
         </button>
          {!user ? (
           <SignInButton>
-            <Button>Get started</Button>
+            <Button className="cursor-pointer">Get started</Button>
           </SignInButton>
         ):(
           <UserButton/>
@@ -47,7 +47,7 @@ export default function Navbar() {
       </button>
 
       {/* Mobile Menu */}
-      <div className={`absolute top-24 left-0 bg-black w-full flex flex-col items-center gap-4 py-6 transition-all duration-300 
+      <div className={`absolute top-24 z-50 left-0 bg-black w-full flex flex-col items-center gap-4 py-6 transition-all duration-300 
         ${open ? "opacity-100 visible" : "opacity-0 invisible"}`}
       >
         <Link href="/Real-Estate/" className="hover:text-indigo-600">Filters</Link>

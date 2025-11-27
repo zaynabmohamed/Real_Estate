@@ -14,7 +14,7 @@ if (!FeatureRealestate) return <p>Loading... </p>;
 
   return (
     <div>
-      <div className='p-24  mb-8 space-y-12'>
+      <div className='p-14  mb-8 space-y-12'>
         <h2>Real-Estate</h2>
         {FeatureRealestate === undefined ? (
           <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6'>
@@ -23,9 +23,9 @@ if (!FeatureRealestate) return <p>Loading... </p>;
          ))}
           </div>
         ):FeatureRealestate.length ===  0 ? (
-          <div className='text-center shadow-lg h-[150px] flex justify-center items-center flex-col'>
+          <div className='text-center shadow-lg h-[200px] flex justify-center items-center flex-col'>
             <h3 className=' text-xl font-semibold text-gray-600 mb-4'>No Feature Real-Estate </h3>
-             <Button>Add your Rea-Estate</Button>
+            <Link href="/Real-Estate/new" ><Button>Add your Rea-Estate</Button></Link>
           </div>
         ): (<div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6'>
            {FeatureRealestate.map((property)=>(
