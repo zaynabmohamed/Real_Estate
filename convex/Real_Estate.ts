@@ -101,40 +101,40 @@ if (args.bathrooms != null) {
           }
         })
 // update property 
- export const updateProperty = mutation({  // muttion تعبر عن عملية ارسال البيانات
-          args:{
-            id:v.id("Real_Estate"),
-             title:v.string(),
-                    description:v.string(),
-                    price:v.number(),
-                   bedrooms: v.optional(v.number()),
-                   bathrooms: v.optional(v.number()),
-                    area:v.number(),
-                    address:v.string(),
-                    city:v.string(),
-                    state:v.string(),
-                    zipCode:v.string(),
-                    propertyType:v.union(
-                        v.literal("house"),
-                        v.literal("apartment"),
-                        v.literal("condo"),
-                        v.literal("townhouse"),
-                    ),
-                    status:v.union(
-                         v.literal("for-sale"),
-                         v.literal("for-rent"),
-                         v.literal("sold"),
-                         v.literal("rented"),
-                    ),
-                    images:v.array(v.string()), // cloudinary Urls
-                    featured:v.optional(v.boolean()),
-          },
-          handler: async(ctx , args)=>{
-           const {id, ... updates}  = args;
-           await ctx.db.patch(id, updates)
-            }
-          }
-         )
+export const updateProperty = mutation({
+  args: {
+    id: v.id("Real_Estate"),
+    title: v.string(),
+    description: v.string(),
+    price: v.number(),
+    bedrooms: v.number(),
+    bathrooms: v.number(),
+    area: v.number(),
+    address: v.string(),
+    city: v.string(),
+    state: v.string(),
+    zipCode: v.string(),
+    propertyType: v.union(
+      v.literal("house"),
+      v.literal("apartment"),
+      v.literal("condo"),
+      v.literal("townhouse"),
+    ),
+    status: v.union(
+      v.literal("for-sale"),
+      v.literal("for-rent"),
+      v.literal("sold"),
+      v.literal("rented"),
+    ),
+    images: v.array(v.string()),
+    featured: v.optional(v.boolean()),
+  },
+  handler: async (ctx, args) => {
+    const { id, ...updates } = args;
+    await ctx.db.patch(id, updates);
+  },
+});
+
 // Delete  a property 
 export const deleteProperty =  mutation({
   args:{id: v.id("Real_Estate")},

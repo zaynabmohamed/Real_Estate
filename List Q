@@ -1,0 +1,5 @@
+Q1 :- using priority in <images/> improve SEO , performance 
+Q2 :- using useMemo save the data 
+Q3 :- using usecallback send all the data again if get change in dependency 
+Q3 :- using React.memo increment the re-render the function 
+Q4 :-  using useDebounce 

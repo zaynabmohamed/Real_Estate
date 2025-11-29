@@ -12,16 +12,16 @@ export default function Navbar() {
       const {user} = useUser()
   return (
     <div>
-      <nav className="flex items-center bg-black justify-around border mx-4 max-md:w-full max-md:justify-between border-slate-700 px-4 py-2 w-full m-0! text-white text-lg">
+      <nav  role="navigation" className="flex items-center bg-black justify-around border mx-4 max-md:w-full max-md:justify-between border-slate-700 px-4 py-2 w-full m-0! text-white text-lg">
     <Link href="/">
-       <Image src={logo} alt="logo Real-Estate" className="rounded-full object-cover" width={80} height={80} />
+       <Image src={logo} alt="Real Estate Logo - Home and Property" className="rounded-full object-cover" width={80} height={80} priority />
            </Link>
     <div className="hidden md:flex items-center gap-6 ml-7">
         <Link href="/Real-Estate/" className="relative overflow-hidden h-6 group">
-            <span>Filters</span>
+            <span> Filter </span>
         </Link>
         <Link href="/Real-Estate/new" className="relative overflow-hidden h-6 group">
-            <span>Add Products</span>
+            <span>Add</span>
         </Link>
     </div>
     <div className="hidden ml-14 md:flex items-center gap-4">
@@ -43,22 +43,24 @@ export default function Navbar() {
         onClick={() => setOpen(!open)} 
         className="md:hidden text-white"
       >
-        {open ? <X size={28} /> : <Menu size={28} />}
+      {open ? <X size={28} /> : <Menu size={28} />}
       </button>
 
       {/* Mobile Menu */}
       <div className={`absolute top-24 z-50 left-0 bg-black w-full flex flex-col items-center gap-4 py-6 transition-all duration-300 
         ${open ? "opacity-100 visible" : "opacity-0 invisible"}`}
       >
-        <Link href="/Real-Estate/" className="hover:text-indigo-600">Filters</Link>
+        <Link href="/Real-Estate/" className="hover:text-indigo-600">Filters Real-Estate</Link>
         <Link href="/Real-Estate/new" className="hover:text-indigo-600">Add Products</Link>
         <button className="border border-slate-600 hover:bg-slate-800 px-4 py-2 rounded-full text-sm font-medium transition">
           Contact
         </button>
-        <button
+         <SignInButton>
+        <Button
             className="bg-white hover:shadow-[0px_0px_30px_14px] shadow-[0px_0px_30px_7px] hover:shadow-white/50 shadow-white/50 text-black px-4 py-2 rounded-full text-sm font-medium hover:bg-slate-100 transition duration-300">
             Get Started
-        </button>
+        </Button>
+        </SignInButton>
 
     </div>
 </nav>

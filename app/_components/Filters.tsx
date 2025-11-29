@@ -1,7 +1,7 @@
-"use client";
-
-import { useState, useEffect} from "react";
+"use client"
+import React, { useCallback, useEffect, useState} from "react";
 import { PropertyFilters } from "../Types/Type";
+import useDebounce from "../Hook/useDebounce";
 
 interface TypeFilter {
   filter: PropertyFilters;
@@ -9,39 +9,34 @@ interface TypeFilter {
 }
 
 export default function Filters({ filter, onFilterChange }: TypeFilter) {
-  // const [inputs, setInputs] = useState({
-  //   min: "",
-  //   max: "",
-  //   bedrooms: "",
-  //   bathrooms: "",
-  //   status: "",
-  //   propertyType: "",
-  // });
-  // const debouncedInputs = useDebounce(inputs , 999);
-  // useEffect(() => {
-  //   onFilterChange({
-  //     ...filter,
-  //     minPrice: debouncedInputs.min ? Number(debouncedInputs.min) : undefined,
-  //     maxPrice: debouncedInputs.max ? Number(debouncedInputs.max) : undefined,
-  //     bedrooms: debouncedInputs.bedrooms ? Number(debouncedInputs.bedrooms) : undefined,
-  //     bathrooms: debouncedInputs.bathrooms ? Number(debouncedInputs.bathrooms) : undefined,
-  //     status: debouncedInputs.status || undefined,
-  //     propertyType: debouncedInputs.propertyType || undefined,
-  //   });
-  // }, [debouncedInputs]);
 
-  // const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
-  //   const { name, value } = e.target;
-  //   setInputs((prev) => ({ ...prev, [name]: value }));
-  // };
-  
-  const handleFilterChange = (key:keyof PropertyFilters , value :any)=>{
-    onFilterChange ({
+
+   const [minPriceInput, setMinPriceInput] = useState(filter.minPrice || "");
+  const [maxPriceInput, setMaxPriceInput] = useState(filter.maxPrice || "");
+
+  // Debounced values
+  const dMin = useDebounce(minPriceInput, 600);
+  const dMax = useDebounce(maxPriceInput, 600);
+
+  // Send ONLY debounced values to parent
+  useEffect(() => {
+    onFilterChange({
       ...filter,
-      [key] : value === "" || value ==="all" ? undefined : value
-    })
-  }
+      minPrice: dMin ? Number(dMin) : undefined,
+      maxPrice: dMax ? Number(dMax) : undefined,
+    });
+  }, [dMin, dMax]);
 
+// useing (usecallback) => بتعمل memorization for function  , بتمنع عمل re-render مع كل تغير في الfunction الا لو ال dependency اتغيرت
+const handleFilterChange = useCallback(
+  (key: keyof PropertyFilters, value: any) => {
+    onFilterChange({
+      ...filter,
+      [key]: value === "" || value === "all" ? undefined : value,
+    });
+  },
+  [filter, onFilterChange ]
+);
 
   return (
     <div className="space-y-4">
@@ -99,28 +94,26 @@ export default function Filters({ filter, onFilterChange }: TypeFilter) {
         </div>
 
         {/* Min Price */}
-        <div>
-          <label className="block text-sm font-medium text-gray-700 mb-1">Min Price</label>
-          <input
-            name="min"
+         <div>
+           <label className="block text-sm font-medium mb-1">Min Price</label>
+           <input
+           placeholder="min price"
             type="number"
-            placeholder="Min price"
-            className="w-full p-2 border border-gray-300 rounded-md"
-            value={filter.minPrice}
-            onChange={(e)=>handleFilterChange("minPrice",e.target.value)}
+            className="w-full p-2 border rounded-md"
+            value={minPriceInput}
+            onChange={(e) => setMinPriceInput(e.target.value)}
           />
         </div>
 
         {/* Max Price */}
         <div>
-          <label className="block text-sm font-medium text-gray-700 mb-1">Max Price</label>
+           <label className="block text-sm font-medium mb-1">Max Price</label>
           <input
-            name="max"
+          placeholder="max price"
             type="number"
-            placeholder="Max price"
-            className="w-full p-2 border border-gray-300 rounded-md"
-            value={filter.maxPrice}
-            onChange={(e)=>handleFilterChange("maxPrice" , e.target.value)}
+            className="w-full p-2 border rounded-md"
+            value={maxPriceInput}
+            onChange={(e) => setMaxPriceInput(e.target.value)}
           />
         </div>
       </div>

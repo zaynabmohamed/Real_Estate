@@ -1,5 +1,6 @@
 
 export default function WhatweDo() {
+  // هنا انا ممكن اللخص الداتا في متغير واعمل عليه map بدل ما اكرر الكود 
   return (
    <div className="bg-white shadow-lg rounded-3xl p-5">
   <div className="flex flex-col justify-center items-center ">
@@ -8,7 +9,6 @@ export default function WhatweDo() {
           Simplifying the journey of buying, selling, and renting real estate. Our expert team provides comprehensive solutions tailored to your needs.
       </p>
   </div>
-
   <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mt-6">
       <div className="p-8">
          <h1 className="text-[#e04141] font-bold text-[20px]"> * Property Sales</h1>

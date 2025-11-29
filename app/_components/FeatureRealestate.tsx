@@ -10,7 +10,18 @@ import Link from 'next/link';
 export default function FeatureRealestate() {
   const FeatureRealestate = useQuery(api.Real_Estate.getFeature)
   console.log(FeatureRealestate);
-if (!FeatureRealestate) return <p>Loading... </p>;
+if (!FeatureRealestate) return <> <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3  gap-6 p-6">
+        {[...Array(6)].map((_, i) => (
+          <div
+            key={i}
+            className="border rounded shadow p-2 animate-pulse"
+          >
+            <div className="bg-gray-300 h-40 w-full rounded mb-2"></div>
+            <div className="bg-gray-300 h-4 w-3/4 rounded mb-1"></div>
+            <div className="bg-gray-300 h-4 w-1/2 rounded"></div>
+          </div>
+        ))}
+      </div></>;
 
   return (
     <div>
