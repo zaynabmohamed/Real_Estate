@@ -12,7 +12,7 @@ export default function Navbar() {
       const {user} = useUser()
   return (
     <div>
-      <nav  role="navigation" className="flex items-center bg-black justify-around border mx-4 max-md:w-full max-md:justify-between border-slate-700 px-4 py-2 w-full m-0! text-white text-lg">
+      <nav  role="navigation" className="flex items-center bg-black justify-around border mx-4 max-md:w-full max-md:justify-between border-slate-700 px-4 py-2 w-full m-0! text-white text-sm">
     <Link href="/">
        <Image src={logo} alt="Real Estate Logo - Home and Property" className="rounded-full object-cover" width={80} height={80} priority />
            </Link>

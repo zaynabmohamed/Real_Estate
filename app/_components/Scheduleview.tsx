@@ -56,7 +56,7 @@ export default function Scheduleview({ property }: TypeProperty) {
           type="button"
           aria-label={`Select viewing time ${time}`}
           onClick={() => setSelectTime(time)}
-          className={`p-2 text-sm border rounded-md transition-colors ${
+          className={`p-2 text-sm w-[90px] border rounded-md transition-colors scroll-m-2 ${
             selectTime === time ? "bg-red-700 text-black" : "bg-black hover:bg-gray-600"
           }`}
         >
@@ -125,33 +125,33 @@ export default function Scheduleview({ property }: TypeProperty) {
 
   return (
     <div>
-      <Dialog>
+      <Dialog >
         <DialogTrigger asChild>
           <Button className="w-[200px]">Schedule Viewing</Button>
         </DialogTrigger>
 
-        <DialogContent className="w-full max-w-lg">
+        <DialogContent className="h-screen w-full">
           <DialogHeader>
-            <DialogTitle>Schedule a Viewing</DialogTitle>
+            <DialogTitle className="pb-4">Schedule a Viewing</DialogTitle>
             <DialogDescription className="text-xl">
-              Book a viewing for <strong>{property.title}</strong>
+              Book a viewing for <strong className="text-gray-800">{property.title}</strong>
             </DialogDescription>
           </DialogHeader>
 
           {success ? (
-            <div className="text-center py-4 w-full">
+            <div className="text-center">
               <h2 className="text-2xl  text-red-500 pb-4">View Scheduled</h2>
               <p className="text-lg">We will contact you soon to confirm your appointment.</p>
             </div>
           ) : (
-            <form onSubmit={handleSubmit} className="space-y-4">
+            <form onSubmit={handleSubmit} className="space-y-4 overflow-y-scroll">
               {/* Calendar */}
               <Calendar
                 mode="single"
                 selected={selectDate}
                 disabled={isDateDisabled}
                 onSelect={setSelectDate}
-                className="rounded-lg border w-full"
+                className="rounded-lg border"
               />
 
               {/* Time Selection */}
@@ -159,7 +159,7 @@ export default function Scheduleview({ property }: TypeProperty) {
 
               {/* Phone */}
               <div className="space-y-2">
-                <Label htmlFor="phone" className="my-2">
+                <Label htmlFor="phone" className="">
                   Phone
                 </Label>
                 <Input

@@ -27,7 +27,7 @@ export default function HeroHome() {
         {/* Overlay */}
         <div className="absolute inset-0 bg-black/80 flex items-center justify-center">
           <div className="text-center px-4 md:px-0">
-            <h1 className="text-4xl md:text-7xl font-bold mb-6 text-white">
+            <h1 className="text-4xl md:text-4xl font-bold mb-6 text-white">
               Welcome to the
               <span className="block text-[#e04141] mt-2">Real_Estate</span>
             </h1>

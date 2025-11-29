@@ -56,7 +56,7 @@ export default React.memo( function PageDetails() {
   }
 
   return (
-    <div className="max-w-4xl mx-auto">
+    <div className="max-w-2xl mx-auto">
 
       {/* Buttons */}
       <div className="flex items-center mt-10 justify-end gap-3">
@@ -82,7 +82,8 @@ export default React.memo( function PageDetails() {
                 src={getproperty.images[select]}
                 alt={getproperty.title}
                 height={500}
-                width={1200}
+                width={800}
+                priority
               />
             </div>
 
@@ -109,7 +110,7 @@ export default React.memo( function PageDetails() {
       </div>
 
       {/* Content */}
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-6 p-6">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-6 p-4">
 
         <div className="lg:col-span-2 space-y-6">
           <h1 className="text-3xl font-bold text-gray-900">{getproperty.title}</h1>
@@ -131,7 +132,7 @@ export default React.memo( function PageDetails() {
           </div>
 
           {/* Property Details */}
-          <div className="bg-white rounded-lg border shadow-lg p-6">
+          <div className="bg-white rounded-lg border shadow-lg p-4">
             <h2 className="font-bold text-xl mb-4">Details</h2>
 
             <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
