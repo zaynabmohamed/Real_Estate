@@ -31,9 +31,11 @@ export default function HeroHome() {
               Welcome to the
               <span className="block text-[#e04141] mt-2">Real_Estate</span>
             </h1>
-            <p className="text-xl md:text-2xl mb-8 text-gray-200">
-              Your partner for innovative solutions and premium services. We help you achieve your property goals, ensuring success in a competitive market.
+            <p className="text-xl md:text-2xl mb-2 text-gray-200 ">
+              Your partner for innovative solutions and premium services.
             </p>
+            <p  className="text-xl md:text-2xl mb-4 text-gray-200 "> We help you achieve your property goals, 
+              ensuring success in a competitive market.</p>
             <Link href="/Real-Estate">
               <Button className="bg-[#e04141] hover:bg-red-600 transition-colors">
                 Get Started Now
