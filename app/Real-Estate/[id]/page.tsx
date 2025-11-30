@@ -12,7 +12,10 @@ import imgwhatsApp from "../../../public/images.whatsApp.png";
 import Scheduleview from "@/app/_components/Scheduleview";
 import { Id } from "@/convex/_generated/dataModel";
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> 282cd18ca8096b3a8dcd1b8f821800dbd3afdeb1
 export default React.memo( function PageDetails() {
   const [select, setSelect] = useState(0);
 
