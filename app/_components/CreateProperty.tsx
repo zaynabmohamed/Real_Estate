@@ -224,7 +224,7 @@ export default function CreateProperty({
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           <div className="md:col-span-2">
-            <label className="block text-sm font-medium mb-1" htmlFor="title">
+            <label className="block text-sm font-normal mb-1" htmlFor="title">
               Property Title *
             </label>
             <input
