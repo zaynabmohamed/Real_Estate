@@ -1,5 +1,4 @@
 import CreateProperty from "@/app/_components/CreateProperty";
-<<<<<<< HEAD
 // app/Real-Estate/add/page.tsx
 import { Metadata } from "next";
 
@@ -40,12 +39,9 @@ export const metadata: Metadata = {
   },
 };
 
-export default function Page() {
   
-=======
 
 export default function Page() {
->>>>>>> 282cd18ca8096b3a8dcd1b8f821800dbd3afdeb1
   return (
     <div className='max-w-4xl mx-auto'>
 
