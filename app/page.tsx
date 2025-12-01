@@ -1,7 +1,4 @@
 
-
-
-
 import Connecting from "./_components/Connecting";
 import FeatureRealestate from "./_components/FeatureRealestate";
 import HeroHome from "./_components/HeroHome";

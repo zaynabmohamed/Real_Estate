@@ -11,16 +11,16 @@ export const metadata: Metadata = {
   keywords: ["Real Estate Egypt", "Apartments for Sale", "Houses for Rent", "Villas in Egypt"],
   robots: "index, follow",
   alternates: {
-    canonical: "https://real-estate-s8pm-git-main-zaynabs-projects-78442352.vercel.app",
+    canonical: "https://real-estate-8pks.vercel.app",
     languages: {
-      "en": "https://real-estate-s8pm-git-main-zaynabs-projects-78442352.vercel.app/en",
-      "ar": "https://real-estate-s8pm-git-main-zaynabs-projects-78442352.vercel.app/ar",
+      "en": "https://real-estate-8pks.vercel.app/en",
+      "ar": "https://real-estate-8pks.vercel.app/ar",
     },
   },
   openGraph: {
     title: "Best Real Estate Listings in Egypt",
     description: "Buy or rent apartments, villas, and houses with ease.",
-    url: "https://real-estate-s8pm-git-main-zaynabs-projects-78442352.vercel.app",
+    url: "https://real-estate-8pks.vercel.app",
     images: [
       {
         url: "/images/og-image.jpg",
@@ -48,8 +48,8 @@ export default function RootLayout({
     "@type": "RealEstateListing",
     name: "Luxury Apartment in Cairo",
     description: "Spacious 3-bedroom apartment for sale in downtown Cairo.",
-    url: "https://real-estate-s8pm-git-main-zaynabs-projects-78442352.vercel.app/property/123",
-    image: "https://real-estate-s8pm-git-main-zaynabs-projects-78442352.vercel.app/images/property123.jpg",
+    url: "https://real-estate-8pks.vercel.app/property/123",
+    image: "https://real-estate-8pks.vercel.app/images/property123.jpg",
     offers: {
       "@type": "Offer",
       price: "2000000",
